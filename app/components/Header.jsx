@@ -71,7 +71,7 @@ const Header = () => {
             <Image src={assets.download_icon} alt="Download" className="w-5 h-5" />
           </motion.div>
 
-          <span className="font-Ovo text-gray-800 text-sm sm:text-base">My Resume</span>
+          <span className="font-Ovo text-gray-800 text-sm sm:text-base">My Resumee</span>
         </a>
       </motion.div>
     </motion.div>
