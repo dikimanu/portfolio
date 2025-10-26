@@ -1,106 +1,93 @@
-import React, { useState } from 'react';
-import { assets } from '@/assets/assets';
-import Image from 'next/image';
-import { motion } from 'framer-motion';
+"use client";
+import React, { useState } from "react";
+import Image from "next/image";
+import { motion } from "framer-motion";
+import { assets } from "@/assets/assets";
 
-const fadeUp = { hidden: { opacity: 0, y: 50 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6 } } };
-
-// For staggered children animations
-const container = {
-  hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.15
-    }
-  }
+const fadeUp = {
+  hidden: { opacity: 0, y: 50 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
 };
 
 const Contact = () => {
   const [result, setResult] = useState("");
 
-  const onSubmit = async (event) => {
-    event.preventDefault();
-    setResult("Sending....");
-    const formData = new FormData(event.target);
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    setResult("Sending...");
+    const formData = new FormData(e.target);
     formData.append("access_key", process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY);
 
-    const response = await fetch("https://api.web3forms.com/submit", { method: "POST", body: formData });
+    const response = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      body: formData,
+    });
     const data = await response.json();
 
     if (data.success) {
-      setResult("Form Submitted Successfully");
-      event.target.reset();
-    } else {
-      setResult(data.message);
-    }
+      setResult("✅ Form submitted successfully!");
+      e.target.reset();
+    } else setResult("❌ " + data.message);
   };
 
   return (
-    <motion.div
-      id='contact'
-      className='w-full px-[12%] py-10 scroll-mt-20 bg-[url("/footer-bg-color.png)] bg-no-repeat bg-center bg-[length:90%_auto]'
+    <motion.section
+      id="contact"
+      className="w-full px-[12%] py-16 bg-gradient-to-br from-green-100 via-blue-100 to-purple-100 scroll-mt-20"
       variants={fadeUp}
       initial="hidden"
       whileInView="visible"
-      viewport={{ amount: 0.2 }}
     >
-      <motion.h4 className='text-center mb-2 text-lg font-Ovo' variants={fadeUp}>
-        Connect with me
+      <motion.h4 className="text-center mb-2 text-lg font-Ovo text-gray-700" variants={fadeUp}>
+        Connect with Me
       </motion.h4>
-      <motion.h2 className='text-center text-5xl font-Ovo' variants={fadeUp}>
-        Get latest Updates
+      <motion.h2 className="text-center text-4xl sm:text-5xl font-Ovo text-gray-900" variants={fadeUp}>
+        Get Latest Updates
       </motion.h2>
-      <motion.p className='text-center max-w-2xl mx-auto mt-5 mb-12 font-Ovo text-sm sm:text-base' variants={fadeUp}>
-        I am a developer. I do development work and contribute to projects like Amazon, Microsoft.
+      <motion.p
+        className="text-center max-w-2xl mx-auto mt-5 mb-12 text-gray-700 font-Ovo text-sm sm:text-base"
+        variants={fadeUp}
+      >
+        Let’s collaborate! Fill out the form below to reach out or discuss a project idea.
       </motion.p>
 
       <motion.form
         onSubmit={onSubmit}
-        className='max-w-2xl mx-auto'
-        variants={container}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ amount: 0.2 }}
+        className="max-w-2xl mx-auto bg-white/80 backdrop-blur-sm rounded-xl p-8 shadow-lg"
+        variants={fadeUp}
       >
-        <motion.div className='grid grid-cols-auto gap-6 mt-10 mb-8' variants={fadeUp}>
-          <motion.input
+        <div className="grid sm:grid-cols-2 gap-6 mb-6">
+          <input
             type="text"
-            placeholder='Enter your name'
+            name="name"
+            placeholder="Enter your name"
             required
-            className='flex-1 p-3 outline-none border-[0.5px] border-gray-400 rounded-md bg-white'
-            name='name'
-            variants={fadeUp}
+            className="p-3 rounded-lg border border-gray-300 bg-white shadow-sm focus:ring-2 focus:ring-blue-400 outline-none"
           />
-          <motion.input
+          <input
             type="email"
-            placeholder='Enter your email'
+            name="email"
+            placeholder="Enter your email"
             required
-            className='flex-1 p-3 outline-none border-[0.5px] border-gray-400 rounded-md bg-white'
-            name='email'
-            variants={fadeUp}
+            className="p-3 rounded-lg border border-gray-300 bg-white shadow-sm focus:ring-2 focus:ring-blue-400 outline-none"
           />
-        </motion.div>
-
-        <motion.textarea
-          rows='6'
-          placeholder='Enter your message'
+        </div>
+        <textarea
+          name="message"
+          rows="5"
+          placeholder="Enter your message"
           required
-          className='w-full p-4 outline-none border-[0.5px] border-gray-400 rounded-md bg-white mb-6'
-          name='message'
-          variants={fadeUp}
+          className="w-full p-4 rounded-lg border border-gray-300 bg-white shadow-sm focus:ring-2 focus:ring-blue-400 outline-none mb-6"
         />
-
-        <motion.button
-          type='submit'
-          className='py-3 px-8 w-max flex items-center justify-between gap-2 bg-black/80 text-white rounded-full mx-auto hover:bg-black duration-500'
-          variants={fadeUp}
+        <button
+          type="submit"
+          className="w-full py-3 rounded-full bg-gradient-to-r from-purple-500 to-blue-500 text-white font-semibold shadow-md hover:scale-105 hover:shadow-lg transition"
         >
-          Submit now <Image src={assets.right_arrow_white} alt='' className='w-4'/>
-        </motion.button>
-
-        <motion.p className='mt-4' variants={fadeUp}>{result}</motion.p>
+          Submit Now
+        </button>
+        <p className="mt-4 text-center text-sm text-gray-700">{result}</p>
       </motion.form>
-    </motion.div>
+    </motion.section>
   );
 };
 
