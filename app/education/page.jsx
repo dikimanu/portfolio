@@ -8,9 +8,15 @@ const fadeUp = {
 };
 
 const education = [
+    { degree: "ACADEMIC EDUCATION ", school: "2008-PRESENT" },
   { degree: "B.Tech in CSE Cyber Security", school: "The Neotia University", year: "2024-2028" },
   { degree: "Higher Secondary", school: "Udairampur Pallishree Sikshayatan School", year: "2022-2024" },
   { degree: "Secondary", school: "St. Francis Elite School", year: "2020-2022" },
+    { degree: "Nursery - 8th", school: "St. Joseph's Bright School", year: "2008-2020" },
+  { degree: "EXTRA CURRICULAM ACTIVITIES ", school: "2010-PRESENT" },
+    { degree: "Art & craft ", school: "Obtained a skill", year: "2012-2020" },
+  { degree: "Sports ", school: "Obtained many abilities", year: "2016-present" },
+    { degree: "Exercise", school: "Obtained Confidence, fitness, dedication, etc.", year: "2023-present" },
 ];
 
 export default function EducationPage() {
@@ -22,7 +28,7 @@ export default function EducationPage() {
         initial="hidden"
         whileInView="visible"
       >
-        My Education
+        My Education & Extra Curriculam
       </motion.h1>
 
       <ul className="space-y-6 max-w-3xl mx-auto">

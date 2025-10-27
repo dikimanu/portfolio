@@ -9,9 +9,12 @@ const fadeUp = {
 };
 
 const certificates = [
-  { title: "AI Labs Certificate", image: "/certificate1.jpg", issuer: "Coursera", date: "Jan 2024" },
+  { title: "Advanced Excel Workshop", image: "/certificate1.jpg", issuer: "AI Labs", date: "september 2025" },
+    { title: "Advanced Excel Workshop", image: "/certificate1.jpg", issuer: "AI Labs", date: "september 2025" },
+      { title: "Advanced Excel Workshop", image: "/certificate1.jpg", issuer: "AI Labs", date: "september 2025" },
+        { title: "Advanced Excel Workshop", image: "/certificate1.jpg", issuer: "AI Labs", date: "september 2025" },
+          { title: "Advanced Excel Workshop", image: "/certificate1.jpg", issuer: "AI Labs", date: "september 2025" },
   { title: "Next.js Expert", image: "/nextjs-cert.png", issuer: "Udemy", date: "Mar 2024" },
-  { title: "JavaScript Mastery", image: "/js-cert.png", issuer: "freeCodeCamp", date: "Dec 2023" },
 ];
 
 export default function CertificatesPage() {
@@ -23,7 +26,7 @@ export default function CertificatesPage() {
         initial="hidden"
         whileInView="visible"
       >
-        My Certificates
+        My Academic Certificates
       </motion.h1>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
