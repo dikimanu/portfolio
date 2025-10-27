@@ -8,8 +8,9 @@ const fadeUp = {
 };
 
 const projects = [
-  { title: "Portfolio Website", description: "Built with Next.js, React, and Tailwind CSS", video: "https://www.youtube.com/embed/y99YgaQjgx4", github: "https://github.com/dikimanu/portfolio.git" },
-  { title: "React API App", description: "React app with API integration", video: "https://www.youtube.com/embed/VIDEO_ID_2", github: "#" },
+  { title: "Portfolio Website", description: "Built with Next.js, React, and Tailwind CSS", video: "https://www.youtube.com/embed/5mnanvJGPvw", github: "https://github.com/dikimanu/portfolio.git" },
+  
+  { title: "Html CSS Javascript Projects", description: "5 projects built with Html CSS Javascript, amazing and cool begineer friendly projects", video: "https://www.youtube.com/embed/yCJZb51Lhs0", github: "https://github.com/dikimanu/javascript-projects.git" },
 ];
 
 export default function ProjectsPage() {
